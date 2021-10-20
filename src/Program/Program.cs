@@ -42,12 +42,11 @@ namespace CompAndDel
             IFilter filterSaveLocal = new FilterSaveLocal($@"filterOutput.jpg");
             IFilter filterTwitterPublish = new FilterTwitterPublish($@"filterOutput.jpg", "rj");
             IFilter filterNegative = new FilterNegative();
-            IFilter filterConvolution = new FilterNegativeConvolution();
 
             IPipe pipe5 = new PipeNull();
 
             IPipe pipe7 = new PipeSerial(filterSaveLocal, pipe5);
-            IPipe pipe6 = new PipeSerial(filterConvolution, pipe7);
+            IPipe pipe6 = new PipeSerial(filterNegative, pipe7);
 
             IPipe pipe4 = new PipeSerial(filterTwitterPublish, pipe5);
             IPipe pipe3 = new PipeSerial(filterSaveLocal, pipe4);
